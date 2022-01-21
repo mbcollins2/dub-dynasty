@@ -1,23 +1,25 @@
 from espn_api.basketball import league
 import pandas as pd
-# pd.set_option('display.max_colwidth', -1)
 import pickle
+from league_data import download_free_agents
 
-p = open('league.pkl', 'rb')
-league = pickle.load(p)
+download_free_agents()
 
-myTeam = league.teams[2]
+# p = open('league.pkl', 'rb')
+# league = pickle.load(p)
 
-# print(myTeam.roster)
+# myTeam = league.teams[2]
 
-roster = pd.DataFrame()
+# # print(myTeam.roster)
 
-for player in myTeam.roster:
-    roster = roster.append([[player.name, player.proTeam, player.position, player.stats]])
-    # print(player.name, player.proTeam, player.position)
+# roster = pd.DataFrame()
 
-roster.columns = ['Player', 'Team', 'Position', 'Stats']
+# for player in myTeam.roster:
+#     roster = roster.append([[player.name, player.proTeam, player.position, player.stats]])
+#     # print(player.name, player.proTeam, player.position)
 
-print(roster)
+# roster.columns = ['Player', 'Team', 'Position', 'Stats']
+
+# print(roster)
 
 # print(roster.groupby('Team')['Player'].count().sort_values(ascending=False))

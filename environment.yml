@@ -1,0 +1,13 @@
+name: dub-dynasty
+
+dependencies:
+  - python=3.9
+  - pandas
+  - numpy
+  - plotly
+  - matplotlib
+  - pip
+  - pip:
+    - espn-api
+    - streamlit 
+    - watchdog
