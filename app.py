@@ -41,21 +41,19 @@ st.subheader('Free Agents')
 
 fa = pd.read_csv('free_agents.csv')
 
-# filters
-columns = st.multiselect('Filter Columns', options=fa.columns)
-if columns:
-    fa = fa[columns]
 
-# n_col_1, n_col_2, n_col_3, n_col_4, n_col_5, n_col_6 = st.columns(6)
-# with n_col_1:
-#     min_gp = st.number_input('Min. GP', min_value=0, value=0, step=1, disabled=True)
+n_col_1, n_col_2, n_col_3, n_col_4, n_col_5 = st.columns(5)
+with n_col_1:
+    min_gp = st.number_input('Min. GP (Season)', min_value=0, value=0, step=1)
+    fa = fa[fa['total_gp']>=min_gp]
     
 # TODO - add filter for injured
 
 
-
-# TODO - update to only do this if the filters are set
-
+# filters
+columns = st.multiselect('Filter Columns', options=fa.columns)
+if columns:
+    fa = fa[columns]
 
 
 st.dataframe(data=fa)
