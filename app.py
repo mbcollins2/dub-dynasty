@@ -23,7 +23,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 st.title(':basketball:  Dub Dynasty')
 
 # Download Buttons
-b_col_1, b_col_2, _,_,_,_ = st.columns(6)
+b_col_1, b_col_2, _,_,_ = st.columns(5)
 with b_col_1:
     download_league = st.button('Update League Data')
     if download_league:
@@ -46,11 +46,16 @@ columns = st.multiselect('Filter Columns', options=fa.columns)
 if columns:
     fa = fa[columns]
 
-n_col_1, n_col_2, n_col_3, n_col_4, n_col_5, n_col_6 = st.columns(6)
-with n_col_1:
-    min_gp = st.number_input('Min. GP', min_value=0, value=0, step=1)
+# n_col_1, n_col_2, n_col_3, n_col_4, n_col_5, n_col_6 = st.columns(6)
+# with n_col_1:
+#     min_gp = st.number_input('Min. GP', min_value=0, value=0, step=1, disabled=True)
+    
+# TODO - add filter for injured
 
-fa = fa[(fa['total_gp']>=min_gp)]
+
+
+# TODO - update to only do this if the filters are set
+
 
 
 st.dataframe(data=fa)
