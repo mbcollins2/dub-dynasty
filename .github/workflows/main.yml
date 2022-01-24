@@ -13,16 +13,13 @@ jobs:
 
     steps:
       - name: Set SSH file
-        run: 'echo "SSH_KEY" > key'
+        run: 'echo "$SSH_KEY" > key'
         shell: bash
         env:
           SSH_KEY: ${{secrets.SSH_PK}}
         
       - name: SSH into remote
-        run: |
-          ssh -i key ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
-          cd dub-dynasty
-          git pull
+        run: ssh -i key ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
         
 #       - name: Checkout the files
 #         uses: actions/checkout@v2
