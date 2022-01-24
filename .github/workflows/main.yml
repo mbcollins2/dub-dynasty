@@ -24,7 +24,10 @@ jobs:
         shell: bash
         
       - name: SSH into remote
-        run: ssh -o StrictHostKeyChecking=no -i key.pem -tt ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem -tt ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
+          cd dub-dynasty
+          git pull
         
 #       - name: Deploy to server
 #         uses: easingthemes/ssh-deploy@main
