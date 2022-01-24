@@ -14,11 +14,32 @@ jobs:
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
-
-      - name: Deploy to server
-        uses: easingthemes/ssh-deploy@main
+        
+      - name: Set SSH file
+        run: 'echo "$SSH_KEY" > key.pem'
+        shell: bash
         env:
+<<<<<<< HEAD
           SSH_PRIVATE_KEY: ${{secrets.SSH_PK}}
           REMOTE_HOST: ${{secrets.HOST_ADDRESS}}
           REMOTE_USER: ${{secrets.USERNAME}}
           TARGET: ${{secrets.TARGET_DIR}}
+=======
+          SSH_KEY: ${{secrets.SSH_PK}}
+      
+      - name: SSH Access
+        run: sudo chmod 600 key.pem
+        
+      - name: SSH into remote
+        run: ssh -i key.pem -tt ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
+        
+
+
+#       - name: Deploy to server
+#         uses: easingthemes/ssh-deploy@main
+#         env:
+#           SSH_PRIVATE_KEY: ${{secrets.SSH_PK}}
+#           REMOTE_HOST: ${{secrets.HOST_ADDRESS}}
+#           REMOTE_USER: ${{secrets.SSH_PK}}
+#           TARGET: ${{secrets.TARGET_DIR}}
+>>>>>>> 52b9cb9e42ba303e17590e53cd9d15f0cd1e0a44
