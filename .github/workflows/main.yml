@@ -21,4 +21,4 @@ jobs:
           SSH_PRIVATE_KEY: ${ { secrets.SSH_PK }}
           REMOTE_HOST: ${ { secrets.HOST_ADDRESS }}
           REMOTE_USER: ${ { secrets.USERNAME }}
-          TARGET:
+          TARGET: ${ { secrets.TARGET_DIR }}
