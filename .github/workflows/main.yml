@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: SSH into remote
         run: |
-          ssh ${{secrets.SSH_PK}} ${{secrets.SSH_PK}}@${{secrets.HOST_ADDRESS}}
+          ssh ${{secrets.SSH_PK}} ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
           cd dub-dynasty
           git pull
         
