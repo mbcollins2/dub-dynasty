@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
+        
       - name: Set SSH file
         run: 'echo "$SSH_KEY" > key'
         shell: bash
@@ -21,8 +24,7 @@ jobs:
       - name: SSH into remote
         run: ssh -tt -i key ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
         
-#       - name: Checkout the files
-#         uses: actions/checkout@v2
+
 
 #       - name: Deploy to server
 #         uses: easingthemes/ssh-deploy@main
