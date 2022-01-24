@@ -24,8 +24,10 @@ jobs:
         shell: bash
         
       - name: SSH into remote
+        run: ssh -o StrictHostKeyChecking=no -i key.pem -tt ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
+        
+      - name: Update app
         run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem -tt ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
           cd dub-dynasty
           git pull
         
