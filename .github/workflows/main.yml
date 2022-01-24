@@ -24,7 +24,7 @@ jobs:
         shell: bash
         
       - name: SSH into remote
-        run: ssh StrictHostKeyChecking=no -i key.pem -tt ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
+        run: ssh -o StrictHostKeyChecking=no -i key.pem -tt ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
         
 #       - name: Deploy to server
 #         uses: easingthemes/ssh-deploy@main
