@@ -15,6 +15,7 @@ jobs:
       - name: SSH into remote
         run: |
           ssh -i ${{secrets.SSH_PK}} ${{secrets.SSH_PK}}@${{secrets.HOST_ADDRESS}}
+          cd dub-dynasty
           git pull
         
 #       - name: Checkout the files
