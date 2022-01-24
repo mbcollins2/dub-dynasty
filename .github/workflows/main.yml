@@ -16,13 +16,13 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Set SSH file
-        run: 'echo "$SSH_KEY" > key'
+        run: 'echo "$SSH_KEY" > key.pem'
         shell: bash
         env:
           SSH_KEY: ${{secrets.SSH_PK}}
         
       - name: SSH into remote
-        run: ssh -tt -i key ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
+        run: ssh -i key ${{secrets.USERNAME}}@${{secrets.HOST_ADDRESS}}
         
 
 
